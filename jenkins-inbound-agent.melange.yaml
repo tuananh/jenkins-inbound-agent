@@ -7,7 +7,7 @@ package:
     - license: MIT
   dependencies:
     runtime:
-      - busybox
+      - jenkins-remoting
 
 environment:
   contents:
