@@ -10,6 +10,15 @@ contents:
     - ca-certificates-bundle
     - jenkins-remoting@local
     - jenkins-inbound-agent@local
+    - curl
+    - bash
+    - git
+    - git-lfs
+    - openssh-client
+    - openssl
+    - procps
+    - tzdata
+    - tzdata-utils
 
 accounts:
   groups:
