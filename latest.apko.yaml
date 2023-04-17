@@ -7,7 +7,9 @@ contents:
   packages:
     - wolfi-baselayout
     - busybox
-    - hello@local
+    - ca-certificates-bundle
+    - jenkins-remoting@local
+    - jenkins-inbound-agent@local
 
 accounts:
   groups:
@@ -20,8 +22,12 @@ accounts:
   run-as: 65532
 
 entrypoint:
-  command: /usr/local/bin/hello
+  command: /usr/local/bin/jenkins-agent
 
+environment:
+  LANG: en_US.UTF-8
+  JAVA_HOME: /usr/lib/jvm/openjdk-jre
+  
 archs:
 - amd64
 - arm64
