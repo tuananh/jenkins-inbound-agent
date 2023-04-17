@@ -1,6 +1,6 @@
 package:
   name: jenkins-remoting
-  version: 3107_665000b5_20230203
+  version: 3107.v665000b_51092
   epoch: 0
   description: Jenkins remoting
   copyright:
