@@ -1,0 +1,33 @@
+package:
+  name: hello
+  version: 3107_b2f34548_20230313
+  epoch: 0
+  description: Docker image for a Jenkins agent which can connect to Jenkins using TCP or Websocket protocols
+  copyright:
+    - license: MIT
+  dependencies:
+    runtime:
+      - busybox
+
+environment:
+  contents:
+    keyring:
+      - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+    repositories:
+      - https://packages.wolfi.dev/os
+    packages:
+      - busybox
+      - ca-certificates-bundle
+
+vars:
+  mangled-package-version: 3107.v665000b_51092-5
+  
+pipeline:
+  - uses: fetch
+    with:
+      uri: https://github.com/jenkinsci/docker-inbound-agent/archive/refs/tags/${{vars.mangled-package-version}}.tar.gz
+      expected-sha256: 53433b52ffdab1a1133e51b0f7e03bca9d042e42af43663517d2f71680ccc40c
+  - runs: |
+      mkdir -p "${{targets.destdir}}"/usr/local/bin
+      cp ./jenkins-agent "${{targets.destdir}}"/usr/local/bin
+      ln -n "${{targets.destdir}}"/usr/local/bin/jenkins-agent "${{targets.destdir}}"/usr/local/bin/jenkins-slave
