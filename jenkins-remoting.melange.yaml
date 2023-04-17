@@ -1,0 +1,36 @@
+package:
+  name: jenkins-remoting
+  version: 3107_665000b5_20230203
+  epoch: 0
+  description: Jenkins remoting
+  copyright:
+    - license: MIT
+  dependencies:
+    runtime:
+environment:
+  contents:
+    packages:
+      - busybox
+      - ca-certificates-bundle
+      - openjdk-17
+      - maven
+
+vars:
+  mangled-package-version: 3107.v665000b_51092
+  
+pipeline:
+  - uses: fetch
+    with:
+      uri: https://github.com/jenkinsci/remoting/archive/refs/tags/${{vars.mangled-package-version}}.tar.gz
+      expected-sha256: a16f33ba27726d20e142ad285da186d9e72ac567bbed17a8b59d0744273d1453
+  - runs: |
+      export JAVA_HOME=/usr/lib/jvm/openjdk
+      export LANG=en_US.UTF-8
+
+      export MAVEN_OPTS="-DforkCount=2 -DskipTests=true"
+      mvn install
+
+      mkdir -p ${{targets.destdir}}/usr/share/jenkins
+      mv target/remoting-999999-SNAPSHOT.jar ${{targets.destdir}}/usr/share/jenkins/agent.jar
+
+      ln -sf ${{targets.destdir}}/usr/share/jenkins/agent.jar ${{targets.destdir}}/usr/share/jenkins/slave.jar
