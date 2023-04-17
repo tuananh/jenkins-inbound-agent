@@ -37,10 +37,18 @@ jobs:
       - uses: chainguard-dev/actions/setup-melange@main
       - uses: chainguard-dev/actions/melange-keygen@main
       
-      - name: Build hello package
+      - name: Build jenkins-inbound-agent package
         uses: chainguard-dev/actions/melange-build-pkg@main
         with:
           config: jenkins-inbound-agent.melange.yaml
+          sign-with-key: true
+          signing-key-path: ${{ github.workspace }}/melange.rsa
+          archs: x86_64,aarch64
+          
+      - name: Build jenkins-remoting package
+        uses: chainguard-dev/actions/melange-build-pkg@main
+        with:
+          config: jenkins-remoting.melange.yaml
           sign-with-key: true
           signing-key-path: ${{ github.workspace }}/melange.rsa
           archs: x86_64,aarch64
