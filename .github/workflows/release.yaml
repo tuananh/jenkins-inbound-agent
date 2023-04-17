@@ -40,7 +40,7 @@ jobs:
       - name: Build hello package
         uses: chainguard-dev/actions/melange-build-pkg@main
         with:
-          config: hello.melange.yaml
+          config: jenkins-inbound-agent.melange.yaml
           sign-with-key: true
           signing-key-path: ${{ github.workspace }}/melange.rsa
           archs: x86_64,aarch64
