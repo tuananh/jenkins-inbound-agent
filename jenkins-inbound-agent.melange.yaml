@@ -1,6 +1,6 @@
 package:
   name: jenkins-inbound-agent
-  version: 3107_b2f34548_20230313
+  version: 3107.v665000b_51092-5
   epoch: 0
   description: Docker image for a Jenkins agent which can connect to Jenkins using TCP or Websocket protocols
   copyright:
