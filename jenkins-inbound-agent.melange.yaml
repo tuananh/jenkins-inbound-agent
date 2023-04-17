@@ -8,6 +8,7 @@ package:
   dependencies:
     runtime:
       - jenkins-remoting
+      - openjdk-17-jre
 
 environment:
   contents:
