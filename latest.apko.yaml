@@ -18,7 +18,7 @@ contents:
     - openssl
     - procps
     - tzdata
-    - tzdata-utils
+    - tzutils
 
 accounts:
   groups:
