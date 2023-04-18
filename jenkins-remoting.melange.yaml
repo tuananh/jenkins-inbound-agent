@@ -37,4 +37,4 @@ pipeline:
       mkdir -p ${{targets.destdir}}/usr/share/jenkins
       mv target/remoting-999999-SNAPSHOT.jar ${{targets.destdir}}/usr/share/jenkins/agent.jar
 
-      ln -sf ${{targets.destdir}}/usr/share/jenkins/agent.jar ${{targets.destdir}}/usr/share/jenkins/slave.jar
+      ln -sf /usr/share/jenkins/agent.jar ${{targets.destdir}}/usr/share/jenkins/slave.jar
